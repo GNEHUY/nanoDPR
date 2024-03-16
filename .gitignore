@@ -10,3 +10,4 @@ __pycache__
 .vscode
 llama_zero_shot.py
 utils/evaluate.py
+bert-base-uncased

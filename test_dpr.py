@@ -31,7 +31,10 @@ if __name__ == '__main__':
     parser.add_argument("--wikipedia_path",default="downloads/data/wikipedia_split/psgs_w100.tsv")
     parser.add_argument("--nq_test_file",default="downloads/data/retriever/qas/nq-test.csv")
     parser.add_argument("--encoding_batch_size",type=int,default=32)
-    parser.add_argument("--num_shards",type=int,default=8)
+    # parser.add_argument("--num_shards",type=int,default=8)
+    # Please note that the settings here need to be adjusted based on the actual number of embeddings split.
+    # (This depends on how many GPUs you have used for doc2embedding.)
+    parser.add_argument("--num_shards",type=int,default=4)
     parser.add_argument("--num_docs",type=int,default=21015324)
     parser.add_argument("--embedding_dir",required=True)
     parser.add_argument("--pretrained_model_path",required=True)

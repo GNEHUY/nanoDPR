@@ -68,3 +68,20 @@ We also report the training and evaluation cost (all experiments are conducted o
 |          | training | generate embedding |   build index  | search index |
 |:--------:|:--------:|:------------------:|:--------------:|:------------:|
 | Duration |  4h 29m  |      4h 42m        |       20m      |      58s     |
+
+## My own results
+Here I show my replicated results of DPR on the NQ dataset:
+|          | Top-20 | Top-100 |
+|:--------:|:------:|:-------:|
+| [Reported](https://arxiv.org/pdf/2004.04906.pdf) |  78.4  |   85.4  |
+|  Authors |  79.1  |   85.9  |
+|   Mine   |  79.2  |   86.5  |
+
+I also report the training and evaluation cost (all experiments are conducted on 4*RTX 3090 24G):
+(Using a single machine with 4 cards, FP16 precision, and not adopting DeepSeed, FSDP, or Megatron-LM)
+
+|          | training | generate embedding |   build index  | search index |
+|:--------:|:--------:|:------------------:|:--------------:|:------------:|
+| Duration |  6h 52m  |      7h 55m        |       6m       |    1h 43m    |
+
+I don't know why my search took so much time. I saw in the issue section of the original author's GitHub repository that someone spent 55 minutes, and they attributed it to the fact that time would be wasted when faiss uses multiple cards.
