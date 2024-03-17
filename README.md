@@ -77,11 +77,12 @@ Here I show my replicated results of DPR on the NQ dataset:
 |  Authors |  79.1  |   85.9  |
 |   Mine   |  79.2  |   86.5  |
 
-I also report the training and evaluation cost (all experiments are conducted on 4*RTX 3090 24G):
+I also report the training and evaluation cost (all experiments are conducted on 4*RTX 3090 24G, 2\*64 Platinum 8358P CPU @ 2.60GHz):
 (Using a single machine with 4 cards, FP16 precision, and not adopting DeepSeed, FSDP, or Megatron-LM)
 
 |          | training | generate embedding |   build index  | search index |
 |:--------:|:--------:|:------------------:|:--------------:|:------------:|
 | Duration |  6h 52m  |      7h 55m        |       6m       |    1h 43m    |
 
-I don't know why my search took so much time. I saw in the issue section of the original author's GitHub repository that someone spent 55 minutes, and they attributed it to the fact that time would be wasted when faiss uses multiple cards.
+I don't know why my search took so much time. I saw in the issue section of the original author's GitHub repository that someone spent 55 minutes, and they attributed it to the fact that time would be wasted when faiss uses 2 cpu because of the hypter-threading.
+related faiss issuse : [facebookresearch/faiss#2953 (comment)](https://github.com/facebookresearch/faiss/issues/2953#issue-1804547006)
